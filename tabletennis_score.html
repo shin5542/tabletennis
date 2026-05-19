@@ -432,6 +432,11 @@
   document.addEventListener('touchmove', e => e.preventDefault(), { passive: false });
   document.addEventListener('gesturestart', e => e.preventDefault());
   document.addEventListener('dblclick', e => e.preventDefault());
+
+  // Service Worker登録（オフライン対応）
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js').catch(e => console.log('SW error:', e));
+  }
 </script>
 <script>
   const st = {
